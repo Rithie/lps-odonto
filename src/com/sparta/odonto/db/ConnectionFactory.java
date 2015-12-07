@@ -5,9 +5,12 @@
  */
 package com.sparta.odonto.db;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Properties;
 
 /**
  *
@@ -15,9 +18,24 @@ import java.sql.SQLException;
  */
 public class ConnectionFactory {
     
-    public Connection getConnection() {
+    private Connection myConn;
+    
+    public Connection getConnection() throws IOException {
         try {
-            return DriverManager.getConnection("jdbc:mysql://localhost/aula","root","senha");
+            
+            // get db properties
+            Properties props = new Properties();
+            props.load(new FileInputStream("properties"));
+		
+            String user = props.getProperty("user");
+            String password = props.getProperty("password");
+            String dburl = props.getProperty("dburl");
+		
+            // connect to database
+            myConn = DriverManager.getConnection(dburl, user, password);
+		
+            System.out.println("DB connection successful to: " + dburl);
+            return myConn;
         }
         catch(SQLException excecao) {
             throw new RuntimeException(excecao);
