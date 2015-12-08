@@ -9,6 +9,7 @@ import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.FlowLayout;
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -21,7 +22,7 @@ import javax.swing.border.EmptyBorder;
  * Esta é a classe que servirá de ponto de partida para a applicação.
  * @author Rithie7
  */
-public class OdontoApp extends JFrame{
+public class OdontoApp extends javax.swing.JFrame{
     
     
 	private JPanel contentPane;
@@ -45,10 +46,16 @@ public class OdontoApp extends JFrame{
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-
-                                    OdontoApp frame = new OdontoApp();
                                     
-                                    frame.setVisible(true);
+                                    // Show login dialog
+				    //UserLoginDialog dialog = new UserLoginDialog();
+				    UserLoginDialogForm dialog = new UserLoginDialogForm();	
+					
+				    dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+				    dialog.setVisible(true);
+                                    //OdontoApp frame = new OdontoApp();
+                                    
+                                    //frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -59,10 +66,12 @@ public class OdontoApp extends JFrame{
         public OdontoApp(){
                 setTitle("JR Clinica Odontologica");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 584, 300);
+		setBounds(100, 100, 784, 500);
                 JPanel contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
+                setLocationRelativeTo(null);
+                
 		setContentPane(contentPane);
 		
 		JPanel panel = new JPanel();
