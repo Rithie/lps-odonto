@@ -64,6 +64,52 @@ public class UserDAO {
     }
     public void deleteUser(){}
     
+    public void searchUser(String login, String password){
+        PreparedStatement myStmt = null;
+        try 
+			{
+				// prepare statement
+//                                myStmt = connection.prepareStatement(" SELECT (" +
+//                                                                     "SELECT count(*)" +
+//                                                                     "FROM aula.users" +
+//                                                                     "WHERE email = '?'" +
+//                                                                     "AND password = '?'" +
+//                                                                     ")as userCount, " +
+//                                                                     "(	SELECT level " +
+//                                                                     "  FROM aula.users " +
+//                                                                     "  WHERE email = '?' " +
+//                                                                     "  AND password = '?' " +
+//                                                                     ") as userLevel", Statement.RETURN_GENERATED_KEYS);
+                                
+                                myStmt = connection.prepareStatement("SELECT count(*) as userCount FROM aula.users where email = '?' and password = '?'");
+                                // set params
+                                myStmt.setString(1, login);
+                                myStmt.setString(2, password);
+//                                myStmt.setString(3, login);
+//                                myStmt.setString(3, password);
+                                
+				// execute SQL
+                                myStmt.executeUpdate();	
+			
+                                // get the generated employee id
+                                ResultSet generatedKeys = myStmt.getGeneratedKeys();
+                                if ( generatedKeys.next() == true)
+				{
+				    if ( generatedKeys.getInt("userCount") > 0)
+					{
+						System.out.println( generatedKeys.getInt("userCount"));
+					}
+				}
+
+			} 
+			catch (SQLException sqlEx) 
+			{
+				//getLogger().error("sqlexecuteException: " + sqlEx.toString());
+			} 
+			finally{}
+        
+    }
+    
     private static void close(Connection myConn, Statement myStmt, ResultSet myRs)
 			throws SQLException {
 

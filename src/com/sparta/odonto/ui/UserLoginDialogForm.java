@@ -5,6 +5,10 @@
  */
 package com.sparta.odonto.ui;
 
+import com.sparta.odonto.dao.UserDAO;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 
 /**
@@ -98,7 +102,18 @@ public class UserLoginDialogForm extends javax.swing.JFrame {
         // TODO add your handling code here:
         String login = this.loginField.getText();
         char[] password = passwordField.getPassword();
-        System.out.println(password);
+        String pass = String.valueOf(password); 
+       
+        UserDAO dao = null;
+        
+        try {
+            dao = new UserDAO();
+        } catch (IOException ex) {
+            Logger.getLogger(UserLoginDialogForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        dao.searchUser(login, pass );
+        
         // hide the login window
 	setVisible(false);
 	dispose();
