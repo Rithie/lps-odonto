@@ -22,6 +22,7 @@ public class UserLoginDialogForm extends javax.swing.JFrame {
      */
     public UserLoginDialogForm() {
         initComponents();
+        this.errorMessage.setVisible(false);
     }
 
     /**
@@ -33,26 +34,39 @@ public class UserLoginDialogForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        loginLabel = new java.awt.Label();
-        senhaLabel = new java.awt.Label();
+        jComboBox1 = new javax.swing.JComboBox();
         loginField = new java.awt.TextField();
         passwordField = new javax.swing.JPasswordField();
         button1 = new java.awt.Button();
+        errorMessage = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Login");
-        setBackground(new java.awt.Color(204, 255, 204));
+        setBackground(new java.awt.Color(204, 204, 204));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        setForeground(java.awt.Color.cyan);
+        setForeground(new java.awt.Color(51, 51, 255));
 
-        loginLabel.setText("Login:");
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Administrador", "Gerente", "Dentista", "Secretária" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
 
-        senhaLabel.setText("Senha:");
-
+        loginField.setBackground(new java.awt.Color(255, 255, 255));
+        loginField.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
+        loginField.setForeground(new java.awt.Color(153, 153, 153));
         loginField.setText("entre com seu email");
+        loginField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginFieldActionPerformed(evt);
+            }
+        });
 
         passwordField.setText("jPasswordField1");
 
+        button1.setForeground(new java.awt.Color(62, 102, 215));
         button1.setLabel("login");
         button1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -60,39 +74,53 @@ public class UserLoginDialogForm extends javax.swing.JFrame {
             }
         });
 
+        errorMessage.setForeground(new java.awt.Color(255, 51, 51));
+        errorMessage.setText("Login ou senha errados!!!");
+
+        jLabel2.setIcon(new javax.swing.ImageIcon("/Users/Rithie7/NetBeansProjects/lps-odonto/res/bg_basico.png")); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(58, 58, 58)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(button1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(loginLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(senhaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(46, 46, 46)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(loginField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(passwordField, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE))))
-                .addContainerGap(155, Short.MAX_VALUE))
+                .addGap(84, 84, 84)
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(84, 84, 84)
+                .addComponent(loginField, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(84, 84, 84)
+                .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(84, 84, 84)
+                .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(74, 74, 74)
+                .addComponent(errorMessage))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(loginLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(loginField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(senhaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33)
-                .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(123, Short.MAX_VALUE))
+                .addGap(124, 124, 124)
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(164, 164, 164)
+                .addComponent(loginField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(234, 234, 234)
+                .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(194, 194, 194)
+                .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jLabel2)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(274, 274, 274)
+                .addComponent(errorMessage))
         );
+
+        errorMessage.getAccessibleContext().setAccessibleName("Login ou Senha errados!!!");
 
         pack();
         setLocationRelativeTo(null);
@@ -112,18 +140,33 @@ public class UserLoginDialogForm extends javax.swing.JFrame {
             Logger.getLogger(UserLoginDialogForm.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        dao.searchUser(login, pass );
-        
-        // hide the login window
-	setVisible(false);
-	dispose();
+        if(dao.validateUser(login, pass )){
+            System.out.println("deu certo");
+             // hide the login window
+            setVisible(false);
+            dispose();
 						
-	// now show the main app window
-	OdontoApp frame = new OdontoApp();
-	//frame.setLoggedInUserName(theUser.getFirstName(), theUser.getLastName());
-        //frame.setExtendedState(frame.getExtendedState() | JFrame.MAXIMIZED_BOTH); // maximizar a tela
-	frame.setVisible(true);
+            // now show the main app window
+            OdontoApp frame = new OdontoApp();
+            //frame.setLoggedInUserName(theUser.getFirstName(), theUser.getLastName());
+            //frame.setExtendedState(frame.getExtendedState() | JFrame.MAXIMIZED_BOTH); // maximizar a tela
+            frame.setVisible(true);
+        }
+        else{
+            System.out.println("deu erro");
+            this.errorMessage.setVisible(true);
+        }
+        
+       
     }//GEN-LAST:event_button1ActionPerformed
+
+    private void loginFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_loginFieldActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -162,9 +205,10 @@ public class UserLoginDialogForm extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Button button1;
+    private javax.swing.JLabel errorMessage;
+    private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JLabel jLabel2;
     private java.awt.TextField loginField;
-    private java.awt.Label loginLabel;
     private javax.swing.JPasswordField passwordField;
-    private java.awt.Label senhaLabel;
     // End of variables declaration//GEN-END:variables
 }

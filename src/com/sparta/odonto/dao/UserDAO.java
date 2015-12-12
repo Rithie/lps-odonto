@@ -13,6 +13,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import static javax.sql.rowset.spi.SyncFactory.getLogger;
+import javax.sql.rowset.spi.SyncFactoryException;
 
 /**
  *
@@ -64,49 +66,41 @@ public class UserDAO {
     }
     public void deleteUser(){}
     
-    public void searchUser(String login, String password){
+    public boolean validateUser(String login, String password){
         PreparedStatement myStmt = null;
-        try 
-			{
-				// prepare statement
-//                                myStmt = connection.prepareStatement(" SELECT (" +
-//                                                                     "SELECT count(*)" +
-//                                                                     "FROM aula.users" +
-//                                                                     "WHERE email = '?'" +
-//                                                                     "AND password = '?'" +
-//                                                                     ")as userCount, " +
-//                                                                     "(	SELECT level " +
-//                                                                     "  FROM aula.users " +
-//                                                                     "  WHERE email = '?' " +
-//                                                                     "  AND password = '?' " +
-//                                                                     ") as userLevel", Statement.RETURN_GENERATED_KEYS);
+
+        try {
+				// prepare statement 
+                                String sql = ("SELECT count(*) as userCount FROM aula.users where email = '" + login + "' and password = '" + password + "' ");
+                                System.out.println(sql);
+                                myStmt = connection.prepareStatement(sql);
+                                ResultSet rs = myStmt.executeQuery(sql);
                                 
-                                myStmt = connection.prepareStatement("SELECT count(*) as userCount FROM aula.users where email = '?' and password = '?'");
-                                // set params
-                                myStmt.setString(1, login);
-                                myStmt.setString(2, password);
-//                                myStmt.setString(3, login);
-//                                myStmt.setString(3, password);
+                                int userCount = 0;
+                                int userLevel = -1;
                                 
-				// execute SQL
-                                myStmt.executeUpdate();	
-			
-                                // get the generated employee id
-                                ResultSet generatedKeys = myStmt.getGeneratedKeys();
-                                if ( generatedKeys.next() == true)
-				{
-				    if ( generatedKeys.getInt("userCount") > 0)
+                                while(rs.next()){
+                                    userCount = rs.getInt("userCount");
+                                    //userCount = rs.getInt("userLevel");
+                                }
+                                
+                                if ( userCount > 0)
 					{
-						System.out.println( generatedKeys.getInt("userCount"));
+						System.out.println( "teste " + userCount );
+                                                return true;
 					}
-				}
+                                
+				
+				    
+				
 
 			} 
-			catch (SQLException sqlEx) 
+			catch (SQLException u) 
 			{
-				//getLogger().error("sqlexecuteException: " + sqlEx.toString());
+				throw new RuntimeException(u);
 			} 
 			finally{}
+        return false;
         
     }
     

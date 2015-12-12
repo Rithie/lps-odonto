@@ -26,7 +26,7 @@ public class ConnectionFactory {
             // get db properties
             Properties props = new Properties();
             //TODO: Colocar relative path
-            props.load(new FileInputStream("/Users/Rithie7/NetBeansProjects/lps-odonto"));
+            props.load(new FileInputStream("/Users/Rithie7/NetBeansProjects/lps-odonto/res/propiertes"));
 		
             String user = props.getProperty("user");
             String password = props.getProperty("password");
