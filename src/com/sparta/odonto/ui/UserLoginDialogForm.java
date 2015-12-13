@@ -34,11 +34,11 @@ public class UserLoginDialogForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        errorMessage = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox();
         loginField = new java.awt.TextField();
         passwordField = new javax.swing.JPasswordField();
         button1 = new java.awt.Button();
-        errorMessage = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -46,6 +46,9 @@ public class UserLoginDialogForm extends javax.swing.JFrame {
         setBackground(new java.awt.Color(204, 204, 204));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setForeground(new java.awt.Color(51, 51, 255));
+
+        errorMessage.setForeground(new java.awt.Color(255, 51, 51));
+        errorMessage.setText("Login ou senha errados!!!");
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Administrador", "Gerente", "Dentista", "Secretária" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
@@ -73,9 +76,6 @@ public class UserLoginDialogForm extends javax.swing.JFrame {
                 button1ActionPerformed(evt);
             }
         });
-
-        errorMessage.setForeground(new java.awt.Color(255, 51, 51));
-        errorMessage.setText("Login ou senha errados!!!");
 
         jLabel2.setIcon(new javax.swing.ImageIcon("/Users/Rithie7/NetBeansProjects/lps-odonto/res/bg_basico.png")); // NOI18N
 
@@ -128,6 +128,7 @@ public class UserLoginDialogForm extends javax.swing.JFrame {
 
     private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
         // TODO add your handling code here:
+        int userLevel = jComboBox1.getSelectedIndex();
         String login = this.loginField.getText();
         char[] password = passwordField.getPassword();
         String pass = String.valueOf(password); 
@@ -140,12 +141,27 @@ public class UserLoginDialogForm extends javax.swing.JFrame {
             Logger.getLogger(UserLoginDialogForm.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        if(dao.validateUser(login, pass )){
+        if(dao.validateUser(login, pass, userLevel )){
+            
+            switch ( userLevel ){
+                case 0: 
+                    System.out.println("va pra tela 1");
+                    break;
+                case 1:
+                    System.out.println("va pra tela 2");
+                    break;
+                case 2:
+                    System.out.println("va pra tela 3");
+                    break;
+                default:
+                    System.exit(0);
+            }
             System.out.println("deu certo");
              // hide the login window
             setVisible(false);
             dispose();
 						
+            
             // now show the main app window
             OdontoApp frame = new OdontoApp();
             //frame.setLoggedInUserName(theUser.getFirstName(), theUser.getLastName());

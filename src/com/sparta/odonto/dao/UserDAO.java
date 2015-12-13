@@ -66,18 +66,18 @@ public class UserDAO {
     }
     public void deleteUser(){}
     
-    public boolean validateUser(String login, String password){
+    public boolean validateUser(String login, String password, int userLevel){
         PreparedStatement myStmt = null;
 
         try {
 				// prepare statement 
-                                String sql = ("SELECT count(*) as userCount FROM aula.users where email = '" + login + "' and password = '" + password + "' ");
+                                String sql = ("SELECT count(*) as userCount FROM aula.users where email = '" + login + "' and password = '" + password + "' and level = '" + userLevel + "' ");
                                 System.out.println(sql);
                                 myStmt = connection.prepareStatement(sql);
                                 ResultSet rs = myStmt.executeQuery(sql);
                                 
                                 int userCount = 0;
-                                int userLevel = -1;
+                                
                                 
                                 while(rs.next()){
                                     userCount = rs.getInt("userCount");

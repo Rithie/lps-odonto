@@ -45,6 +45,12 @@ public class OdontoApp extends javax.swing.JFrame{
         public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
+                                try {
+                                    Thread.sleep(4500);
+                                }
+                                catch(Exception e){
+                                    //
+                                }
 				try {
                                     
                                     // Show login dialog
