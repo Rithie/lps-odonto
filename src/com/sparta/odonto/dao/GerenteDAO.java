@@ -5,10 +5,13 @@
  */
 package com.sparta.odonto.dao;
 
+import java.sql.Connection;
+
 /**
  *
  * @author Rithie7
  */
 public class GerenteDAO {
     
+    private Connection connection;
 }

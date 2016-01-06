@@ -9,6 +9,11 @@ package com.sparta.odonto.controllers;
  *
  * @author Rithie7
  */
-public class gerenteController {
+public class GerenteCtrl {
     
+    public GerenteCtrl(){}
+    
+    public void buscarUsuario( String texto ){
+        System.out.print(texto);
+    }
 }
