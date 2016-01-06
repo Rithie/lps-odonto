@@ -146,9 +146,17 @@ public class UserLoginDialogForm extends javax.swing.JFrame {
             switch ( userLevel ){
                 case 0: 
                     System.out.println("va pra tela 1");
+                    // now show the main app window
+                    AdministradorApp frame = new AdministradorApp();
+                    //frame.setLoggedInUserName(theUser.getFirstName(), theUser.getLastName());
+                    //frame.setExtendedState(frame.getExtendedState() | JFrame.MAXIMIZED_BOTH); // maximizar a tela
+                    frame.setVisible(true);
                     break;
                 case 1:
                     System.out.println("va pra tela 2");
+                    
+                    GerenteApp frame2 = new GerenteApp();
+                    frame2.setVisible(true);
                     break;
                 case 2:
                     System.out.println("va pra tela 3");
@@ -162,11 +170,7 @@ public class UserLoginDialogForm extends javax.swing.JFrame {
             dispose();
 						
             
-            // now show the main app window
-            OdontoApp frame = new OdontoApp();
-            //frame.setLoggedInUserName(theUser.getFirstName(), theUser.getLastName());
-            //frame.setExtendedState(frame.getExtendedState() | JFrame.MAXIMIZED_BOTH); // maximizar a tela
-            frame.setVisible(true);
+            
         }
         else{
             System.out.println("deu erro");

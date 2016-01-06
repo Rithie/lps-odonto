@@ -8,6 +8,8 @@ package com.sparta.odonto.ui;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.FlowLayout;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
@@ -22,7 +24,7 @@ import javax.swing.border.EmptyBorder;
  * Esta é a classe que servirá de ponto de partida para a applicação.
  * @author Rithie7
  */
-public class OdontoApp extends javax.swing.JFrame{
+public class AdministradorApp extends javax.swing.JFrame{
     
     
 	private JPanel contentPane;
@@ -45,12 +47,7 @@ public class OdontoApp extends javax.swing.JFrame{
         public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
-                                try {
-                                    Thread.sleep(4500);
-                                }
-                                catch(Exception e){
-                                    //
-                                }
+
 				try {
                                     
                                     // Show login dialog
@@ -68,8 +65,13 @@ public class OdontoApp extends javax.swing.JFrame{
 			}
 		});
 	}
-        public OdontoApp(String firstName, String LastName){}
-        public OdontoApp(){
+        public AdministradorApp(String firstName, String LastName){}
+        public AdministradorApp(){
+                addWindowListener(new WindowAdapter() {
+                    public void windowClosing(WindowEvent e){
+                        System.exit(0);
+                    }
+                });
                 setTitle("JR Clinica Odontologica");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 784, 500);
