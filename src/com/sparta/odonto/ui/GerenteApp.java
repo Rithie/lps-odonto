@@ -60,6 +60,11 @@ public class GerenteApp extends javax.swing.JFrame {
         });
 
         jButton2.setText("cadastrar novo usuário");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -167,6 +172,14 @@ public class GerenteApp extends javax.swing.JFrame {
         GerenteCtrl g = new GerenteCtrl();
         g.buscarUsuario(this.buscaUsuarioTextField.getText());
     }//GEN-LAST:event_userSearchJButtonActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        CadastroUsuarioForm c = new CadastroUsuarioForm();
+        c.setAlwaysOnTop(true);
+        this.enable(false);
+        c.show();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
