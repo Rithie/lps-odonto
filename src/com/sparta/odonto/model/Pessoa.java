@@ -11,15 +11,17 @@ package com.sparta.odonto.model;
  */
 public class Pessoa {
 
-	private Integer id_pessoa;
-  	private Integer endereco_id_endereco;
+	private Integer idPessoa;
+  	private Integer idEndereco;
   	private String nome;
   	private String sobrenome;
   	private String cpf;
   	private String rg;
   	private String email;
-  	private String data_nascimento;
+  	private String dataNascimento;
   	private String sexo;
   	private String telefone;
+
+    
     
 }

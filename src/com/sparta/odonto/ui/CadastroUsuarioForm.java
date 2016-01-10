@@ -5,7 +5,13 @@
  */
 package com.sparta.odonto.ui;
 
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Calendar;
+import java.util.Date;
 import javax.swing.JRootPane;
+import org.jdesktop.swingx.calendar.DateSpan;
 
 /**
  *
@@ -18,9 +24,14 @@ public class CadastroUsuarioForm extends javax.swing.JFrame {
      */
     public CadastroUsuarioForm() {
         // ocultando botoes fechar, max , min
-        setUndecorated(true);
-        getRootPane().setWindowDecorationStyle(JRootPane.NONE);
+        //setUndecorated(true);
+        //getRootPane().setWindowDecorationStyle(JRootPane.NONE);
         initComponents();
+        //setando calendario 
+        this.jXMonthView1.setFirstDayOfWeek(Calendar.SUNDAY);
+        this.jXMonthView1.setDaysOfTheWeek(
+            new String[]{"D", "S", "T", "Q", "Q", "S", "S"});
+ 
     }
 
     /**
@@ -32,32 +43,83 @@ public class CadastroUsuarioForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        dateUtils1 = new org.jdesktop.swingx.calendar.DateUtils();
+        datePickerFormatter1 = new org.jdesktop.swingx.calendar.DatePickerFormatter();
+        datePickerCellEditor1 = new org.jdesktop.swingx.table.DatePickerCellEditor();
+        datePickerFormatter2 = new org.jdesktop.swingx.calendar.DatePickerFormatter();
         jButton1 = new javax.swing.JButton();
+        jXStatusBar1 = new org.jdesktop.swingx.JXStatusBar();
+        jXDatePicker1 = new org.jdesktop.swingx.JXDatePicker();
+        jXMonthView1 = new org.jdesktop.swingx.JXMonthView();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jButton1.setText("jButton1");
 
+        jXMonthView1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jXMonthView1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(211, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(92, 92, 92))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jButton1)
+                        .addGap(92, 92, 92))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jXStatusBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(14, 14, 14))))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(53, 53, 53)
+                        .addComponent(jXDatePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addComponent(jXMonthView1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 175, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(221, Short.MAX_VALUE)
+                .addGap(43, 43, 43)
+                .addComponent(jXDatePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jXMonthView1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                 .addComponent(jButton1)
-                .addGap(50, 50, 50))
+                .addGap(36, 36, 36)
+                .addComponent(jXStatusBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jXMonthView1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jXMonthView1ActionPerformed
+        // TODO add your handling code here:
+        ActionListener al;
+  al = new ActionListener ()
+   {
+    public void actionPerformed (ActionEvent e)
+    {
+     Date ds = jXMonthView1.getSelectionDate();
+
+     System.out.println ("First selected date = " +
+          ds.toString());
+
+     System.out.println ("Last selected date = " +
+          ds.toString());
+    }
+   };
+    }//GEN-LAST:event_jXMonthView1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -95,6 +157,13 @@ public class CadastroUsuarioForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private org.jdesktop.swingx.table.DatePickerCellEditor datePickerCellEditor1;
+    private org.jdesktop.swingx.calendar.DatePickerFormatter datePickerFormatter1;
+    private org.jdesktop.swingx.calendar.DatePickerFormatter datePickerFormatter2;
+    private org.jdesktop.swingx.calendar.DateUtils dateUtils1;
     private javax.swing.JButton jButton1;
+    private org.jdesktop.swingx.JXDatePicker jXDatePicker1;
+    private org.jdesktop.swingx.JXMonthView jXMonthView1;
+    private org.jdesktop.swingx.JXStatusBar jXStatusBar1;
     // End of variables declaration//GEN-END:variables
 }
