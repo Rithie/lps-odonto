@@ -71,7 +71,7 @@ public class UserDAO {
 
         try {
 				// prepare statement 
-                                String sql = ("SELECT count(*) as userCount FROM aula.users where email = '" + login + "' and password = '" + password + "' and level = '" + userLevel + "' ");
+                                String sql = ("SELECT count(*) as userCount FROM lps_odonto.usuario_sistema where usuario = '" + login + "' and senha = '" + password + "' and level = '" + userLevel + "' ");
                                 System.out.println(sql);
                                 myStmt = connection.prepareStatement(sql);
                                 ResultSet rs = myStmt.executeQuery(sql);

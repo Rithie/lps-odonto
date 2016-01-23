@@ -28,9 +28,17 @@ public class Dentista extends Pessoa {
     private int CRO;
     private Double salario;
     private int idDentista;
-    private int idPessoa;
+    private int idPessoaPessoa;
     private int reportsTo;
 
+    public int getIdPessoaPessoa() {
+        return idPessoaPessoa;
+    }
+
+    public void setIdPessoaPessoa(int idPessoaPessoa) {
+        this.idPessoaPessoa = idPessoaPessoa;
+    }
+    
     public int getCRO() {
         return CRO;
     }
@@ -59,13 +67,6 @@ public class Dentista extends Pessoa {
      *
      * @return
      */
-    public int getIdPessoa() {
-        return idPessoa;
-    }
-
-    public void setIdPessoa(int idPessoa) {
-        this.idPessoa = idPessoa;
-    }
 
     public int getReportsTo() {
         return reportsTo;
@@ -220,5 +221,107 @@ public class Dentista extends Pessoa {
         // TODO implement here
         return null;
     }
+
+    @Override
+    public void setTelefone(String telefone) {
+        super.setTelefone(telefone); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String getTelefone() {
+        return super.getTelefone(); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void setSexo(String sexo) {
+        super.setSexo(sexo); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String getSexo() {
+        return super.getSexo(); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void setDataNascimento(String dataNascimento) {
+        super.setDataNascimento(dataNascimento); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String getDataNascimento() {
+        return super.getDataNascimento(); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void setEmail(String email) {
+        super.setEmail(email); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String getEmail() {
+        return super.getEmail(); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void setRg(String rg) {
+        super.setRg(rg); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String getRg() {
+        return super.getRg(); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void setCpf(String cpf) {
+        super.setCpf(cpf); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String getCpf() {
+        return super.getCpf(); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void setSobrenome(String sobrenome) {
+        super.setSobrenome(sobrenome); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String getSobrenome() {
+        return super.getSobrenome(); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void setNome(String nome) {
+        super.setNome(nome); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String getNome() {
+        return super.getNome(); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void setIdEndereco(Integer idEndereco) {
+        super.setIdEndereco(idEndereco); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Integer getIdEndereco() {
+        return super.getIdEndereco(); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void setIdPessoa(Integer idPessoa) {
+        super.setIdPessoa(idPessoa); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Integer getIdPessoa() {
+        return super.getIdPessoa(); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    
 
 }

@@ -7,6 +7,7 @@ package com.sparta.odonto.ui;
 
 import com.sparta.odonto.dao.UserDAO;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
@@ -36,7 +37,7 @@ public class UserLoginDialogForm extends javax.swing.JFrame {
 
         errorMessage = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox();
-        loginField = new java.awt.TextField();
+        usuarioField = new java.awt.TextField();
         passwordField = new javax.swing.JPasswordField();
         button1 = new java.awt.Button();
         jLabel2 = new javax.swing.JLabel();
@@ -57,17 +58,26 @@ public class UserLoginDialogForm extends javax.swing.JFrame {
             }
         });
 
-        loginField.setBackground(new java.awt.Color(255, 255, 255));
-        loginField.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
-        loginField.setForeground(new java.awt.Color(153, 153, 153));
-        loginField.setText("entre com seu email");
-        loginField.addActionListener(new java.awt.event.ActionListener() {
+        usuarioField.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
+        usuarioField.setForeground(new java.awt.Color(153, 153, 153));
+        usuarioField.setText("Usuário");
+        usuarioField.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                limparCampo(evt);
+            }
+        });
+        usuarioField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                loginFieldActionPerformed(evt);
+                usuarioFieldActionPerformed(evt);
             }
         });
 
-        passwordField.setText("jPasswordField1");
+        passwordField.setText("jPas");
+        passwordField.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                passwordFieldMousePressed(evt);
+            }
+        });
 
         button1.setForeground(new java.awt.Color(62, 102, 215));
         button1.setLabel("login");
@@ -88,7 +98,7 @@ public class UserLoginDialogForm extends javax.swing.JFrame {
                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(84, 84, 84)
-                .addComponent(loginField, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(usuarioField, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(84, 84, 84)
                 .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -103,21 +113,25 @@ public class UserLoginDialogForm extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(124, 124, 124)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(164, 164, 164)
-                .addComponent(loginField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(234, 234, 234)
-                .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(194, 194, 194)
-                .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addComponent(jLabel2)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(274, 274, 274)
-                .addComponent(errorMessage))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(124, 124, 124)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(164, 164, 164)
+                        .addComponent(usuarioField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(234, 234, 234)
+                        .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(194, 194, 194)
+                        .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(274, 274, 274)
+                        .addComponent(errorMessage)))
+                .addGap(56, 56, 56)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         errorMessage.getAccessibleContext().setAccessibleName("Login ou Senha errados!!!");
@@ -129,7 +143,7 @@ public class UserLoginDialogForm extends javax.swing.JFrame {
     private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
         // TODO add your handling code here:
         int userLevel = jComboBox1.getSelectedIndex();
-        String login = this.loginField.getText();
+        String login = this.usuarioField.getText();
         char[] password = passwordField.getPassword();
         String pass = String.valueOf(password); 
        
@@ -155,7 +169,14 @@ public class UserLoginDialogForm extends javax.swing.JFrame {
                 case 1:
                     System.out.println("va pra tela 2");
                     
-                    GerenteApp frame2 = new GerenteApp();
+                    GerenteAppWindow frame2 = null;
+            try {
+                frame2 = new GerenteAppWindow();
+            } catch (IOException ex) {
+                Logger.getLogger(UserLoginDialogForm.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(UserLoginDialogForm.class.getName()).log(Level.SEVERE, null, ex);
+            }
                     frame2.setVisible(true);
                     break;
                 case 2:
@@ -180,13 +201,21 @@ public class UserLoginDialogForm extends javax.swing.JFrame {
        
     }//GEN-LAST:event_button1ActionPerformed
 
-    private void loginFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginFieldActionPerformed
+    private void usuarioFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usuarioFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_loginFieldActionPerformed
+    }//GEN-LAST:event_usuarioFieldActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void passwordFieldMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_passwordFieldMousePressed
+         this.passwordField.setText("");
+    }//GEN-LAST:event_passwordFieldMousePressed
+
+    private void limparCampo(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_limparCampo
+         this.usuarioField.setText("");
+    }//GEN-LAST:event_limparCampo
 
     /**
      * @param args the command line arguments
@@ -228,7 +257,7 @@ public class UserLoginDialogForm extends javax.swing.JFrame {
     private javax.swing.JLabel errorMessage;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel2;
-    private java.awt.TextField loginField;
     private javax.swing.JPasswordField passwordField;
+    private java.awt.TextField usuarioField;
     // End of variables declaration//GEN-END:variables
 }
