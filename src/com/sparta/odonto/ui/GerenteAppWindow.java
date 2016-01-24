@@ -9,7 +9,7 @@ import com.sparta.odonto.controllers.GerenteCtrl;
 import com.sparta.odonto.controllers.GridCtrl;
 import com.sparta.odonto.dao.PessoaDAO;
 import com.sparta.odonto.model.Pessoa;
-import java.awt.Point;
+
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -17,11 +17,7 @@ import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JDialog;
-import javax.swing.JTable;
-import javax.swing.ListSelectionModel;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
-import javax.swing.table.DefaultTableModel;
+
 
 
 /**
@@ -48,13 +44,13 @@ public class GerenteAppWindow extends javax.swing.JFrame {
         jgrid.setGridProps(l);
     }
     
-     private Object[] appendValue(Object[] obj, Object newObj) {
-
-	ArrayList<Object> temp = new ArrayList<Object>(Arrays.asList(obj));
-	temp.add(newObj);
-	return temp.toArray();
-
-  }
+//     private Object[] appendValue(Object[] obj, Object newObj) {
+//
+//	ArrayList<Object> temp = new ArrayList<Object>(Arrays.asList(obj));
+//	temp.add(newObj);
+//	return temp.toArray();
+//
+//  }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -392,7 +388,12 @@ public class GerenteAppWindow extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        CadastroUsuarioForm c = new CadastroUsuarioForm();
+        //CadastroUsuarioForm c = new CadastroUsuarioForm();
+        //c.setAlwaysOnTop(true);
+        //this.enable(false);
+        //c.show();
+        
+        AgendaWindow c = new AgendaWindow();
         c.setAlwaysOnTop(true);
         this.enable(false);
         c.show();
